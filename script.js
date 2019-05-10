@@ -1,3 +1,5 @@
+const app = document.getElementById('liveweer')
+
 var request = new XMLHttpRequest()
 
 request.open('GET', 'http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam ', true)
