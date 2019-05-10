@@ -1,27 +1,31 @@
-const app = document.getElementById('liveweer')
-const logo = document.createElement('img')
-logo.src = 'https://www.iphone.nl/uploads/cgblog/id370/weeronline.nl_downloaden.jpg'
+const app = document.getElementById('liveweer');
+    const logo = document.createElement('img');
+    logo.src = 'https://www.iphone.nl/uploads/cgblog/id370/weeronline.nl_downloaden.jpg';
 
-const container = document.createElement('div')
-container.setAttribute('class', 'container')
+    const container = document.createElement('div');
+    container.setAttribute('class', 'container');
 
-app.appendChild(logo)
-app.appendChild(container)
+    app.appendChild(logo);
+    app.appendChild(container);
 
-var request = new XMLHttpRequest()
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://weerlive.nl/api/json-data-10min.php?key=f97777689c&locatie=Amsterdam', true);
+    xhr.onload = function() {
+        // Begin accessing JSON data here
+        console.log(xhr.responseText);
+        var data = JSON.parse(xhr.responseText);
 
-request.open('GET', 'http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam ', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response)
+        if (xhr.status >= 200 && xhr.status < 400) {
+            console.log(data);
 
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(liveweer=> {
-      console.log(liveweer.temp
-    })
-  } else {
-    console.log('error')
-  }
-}
 
-request.send()
+            data.liveweer.forEach(function(element) {
+                console.log(element.plaats);
+                console.log(element.temp);
+            });
+        } else {
+            console.log('error')
+        }
+    };
+
+    xhr.send();
