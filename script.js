@@ -10,7 +10,7 @@ app.appendChild(logo)
 app.appendChild(container)
 
 var xhr = new XMLHttpRequest()
-xhr.open('GET', 'https://weerlive.nl/api/json-data-10min.php?key=f97777689c&locatie=Amsterdam', true)
+xhr.open('GET', 'https://weerlive.nl/api/json-data-10min.php?key=f97777689c&locatie=groningen', true)
 xhr.onload = function() {
   // Begin accessing JSON data here
   var data = JSON.parse(xhr.responseText)
