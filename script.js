@@ -1,4 +1,12 @@
 const app = document.getElementById('liveweer')
+const logo = document.createElement('img')
+logo.src = 'https://www.iphone.nl/uploads/cgblog/id370/weeronline.nl_downloaden.jpg'
+
+const container = document.createElement('div')
+container.setAttribute('class', 'container')
+
+app.appendChild(logo)
+app.appendChild(container)
 
 var request = new XMLHttpRequest()
 
